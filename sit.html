@@ -1,0 +1,439 @@
+
+```html
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модульні рішення для бізнесу | Продаж та оренда МАФів</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Базові налаштування (Reset & Variables) */
+        :root {
+            --color-white: #ffffff;
+            --color-black: #0a0a0a;
+            --color-gray-light: #f5f5f5;
+            --color-gray-dark: #666666;
+            --color-green: #1B5E20; /* Дорогий темний зелений відтінок */
+            --color-green-hover: #2E7D32;
+            --font-main: 'Inter', sans-serif;
+            --section-padding: 120px 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-black);
+            background-color: var(--color-white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Типографіка */
+        h1, h2, h3 {
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section-title span {
+            color: var(--color-green);
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            background-color: var(--color-green);
+            color: var(--color-white);
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: var(--color-green-hover);
+        }
+
+        /* Головний екран (Hero) */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            background-color: var(--color-gray-light);
+            background-image: linear-gradient(rgba(245, 245, 245, 0.9), rgba(245, 245, 245, 0.9)), url('https://images.unsplash.com/photo-1541891965259-2a90098df241?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--color-gray-dark);
+            margin-bottom: 40px;
+            font-weight: 300;
+            max-width: 600px;
+        }
+
+        /* Блок Переваг */
+        .advantages {
+            padding: var(--section-padding);
+            background-color: var(--color-white);
+        }
+
+        .adv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .adv-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--color-green);
+        }
+
+        .adv-item p {
+            color: var(--color-gray-dark);
+            font-size: 1.1rem;
+        }
+
+        /* Блок Проєктів */
+        .projects {
+            padding: var(--section-padding);
+            background-color: var(--color-gray-light);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--color-black);
+            aspect-ratio: 4/5;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .project-card:hover img {
+            opacity: 0.5;
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            color: var(--color-white);
+        }
+
+        .project-info h3 {
+            font-size: 1.8rem;
+        }
+
+        /* Блок Послуг */
+        .services {
+            padding: var(--section-padding);
+            background-color: var(--color-white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            padding: 50px 30px;
+            border: 1px solid #eaeaea;
+            transition: border-color 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--color-green);
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card p {
+            color: var(--color-gray-dark);
+        }
+
+        /* Блок Цін */
+        .pricing {
+            padding: var(--section-padding);
+            background-color: var(--color-gray-light);
+            text-align: center;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .price-card {
+            background: var(--color-white);
+            padding: 60px 40px;
+        }
+
+        .price-card p {
+            font-size: 1.2rem;
+            color: var(--color-gray-dark);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .price-card .price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--color-green);
+            line-height: 1;
+        }
+
+        .price-card .currency {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-black);
+        }
+
+        /* Контакти */
+        .contact {
+            padding: var(--section-padding);
+            background-color: var(--color-white);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .contact-info .phone {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-black);
+            display: block;
+            margin-top: 30px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 18px 20px;
+            border: 1px solid #ccc;
+            background-color: var(--color-gray-light);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--color-green);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Футер */
+        footer {
+            background-color: var(--color-black);
+            color: var(--color-gray-dark);
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивність */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .hero p { font-size: 1.2rem; }
+            h2 { font-size: 2.5rem; }
+            .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
+            .contact-info h2 { text-align: center; }
+            .contact-info .phone { text-align: center; font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Модульні рішення для вашого бізнесу</h1>
+            <p>Продаж та оренда МАФів. Швидкий запуск бізнесу без великих витрат.</p>
+            <a href="#contact" class="btn">Отримати консультацію</a>
+        </div>
+    </section>
+
+    <section class="advantages container">
+        <div class="adv-grid">
+            <div class="adv-item">
+                <h3>Швидке встановлення</h3>
+                <p>Монтаж конструкції займає мінімум часу, що дозволяє запустити бізнес у найкоротші терміни.</p>
+            </div>
+            <div class="adv-item">
+                <h3>Сучасний дизайн</h3>
+                <p>Стильні архітектурні рішення, що привертають увагу клієнтів та формують преміальний імідж.</p>
+            </div>
+            <div class="adv-item">
+                <h3>Доступна ціна</h3>
+                <p>Оптимальне співвідношення вартості та якості порівняно з капітальним будівництвом.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects">
+        <div class="container">
+            <h2 class="section-title">Наші <span>проєкти</span></h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Кав'ярня в МАФі">
+                    <div class="project-info">
+                        <h3>Кав’ярні</h3>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Торговий павільйон">
+                    <div class="project-info">
+                        <h3>Торгові павільйони</h3>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1601598851547-4302969d0614?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Міні-магазин">
+                    <div class="project-info">
+                        <h3>Міні-магазини</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services container">
+        <h2 class="section-title">Наші <span>послуги</span></h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Продаж МАФів</h3>
+                <p>Готові комерційні рішення під ключ. Виготовлення, доставка та монтаж на вашій локації.</p>
+            </div>
+            <div class="service-card">
+                <h3>Оренда МАФів</h3>
+                <p>Гнучкі умови оренди для старту бізнесу без капітальних інвестицій у будівництво.</p>
+            </div>
+            <div class="service-card">
+                <h3>Індивідуальні рішення</h3>
+                <p>Проєктування модульних споруд з урахуванням специфіки вашого бренду та потреб.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Прозорі <span>ціни</span></h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <p>Продаж</p>
+                    <div class="price">від 80 000<span class="currency"> грн</span></div>
+                </div>
+                <div class="price-card">
+                    <p>Оренда</p>
+                    <div class="price">від 8 000<span class="currency"> грн/міс</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container contact-wrapper">
+            <div class="contact-info">
+                <h2>Почнемо ваш проєкт <span>сьогодні</span></h2>
+                <p>Залиште заявку, і ми зв'яжемося з вами для обговорення деталей, підбору оптимального рішення та розрахунку вартості.</p>
+                <a href="tel:+380633149199" class="phone">+380 63 314 9199</a>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Ваше ім'я" required>
+                <input type="tel" placeholder="Номер телефону" required>
+                <textarea placeholder="Ваше повідомлення (необов'язково)"></textarea>
+                <button type="submit" class="btn">Надіслати заявку</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            © Пащенко Денис, 2026
+        </div>
+    </footer>
+
+</body>
+</html>
+```
